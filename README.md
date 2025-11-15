@@ -1,22 +1,44 @@
 # Call-manager
-Part1:
-Given a database of contacts (with their info's) but we're only working with the phone numbers.
-The program will:
-- Check for duplicates in phone numbers, when found: display the phone number and the location of the duplicates(their usernames which is in the database)
-- if the phone number is a duplicate but with different info for the contact mark it as well/ display it with the different information
-- if the same location name has many phone numbers add it as second/3rd.. phone number
-- Delete the duplicates after the steps above are done to ensure that no valuable information is lost
-- Update the Contact database
-
-
-Part2:
-
-- Create a repository for phone numbers we're calling
-- Enter the phone number we're calling/going to call
-- Add it to the repository
-- Display that it has been added as a newly called phone number
-- take notes for current call
-
-From there on, when a phone number is entered for calling the program will:
-- Check if it's already in the list or not
-If it is already in the list, then display that it's already been called so that we can move onto the next one
+Overview
+This script is designed to manage a contact database for making calls. It allows users to:
+Check for address conflicts
+Keep track of call status
+Add notes for each call made
+It uses the pandas library to handle data and datetime for timestamps.
+Functions
+import_database(file_path)
+Purpose: Load the contact database from a file.
+Parameters: file_path (str) - Path to the contact database file.
+Returns: DataFrame - Cleaned contact database.
+display_addresses(df, username)
+Purpose: Display addresses for a given username and check for address conflicts.
+Parameters:
+df (DataFrame) - Contact database.
+username (str) - Username to search for.
+Behavior:
+Displays the address and phone number associated with the username.
+Checks for conflicting addresses associated with the same phone number.
+check_call_status(username, called_usernames)
+Purpose: Keep track of who has already been called.
+Parameters:
+username (str) - Username to check.
+called_usernames (set) - Set of usernames that have already been called.
+Returns: str - Status message indicating whether the user has already been called.
+prompt_for_notes()
+Purpose: Prompt the user for notes about the call.
+Returns: str - Notes with a timestamp.
+main()
+Purpose: Main function where the program starts.
+Behavior:
+Loads the contact database.
+Continuously prompts the user for usernames to call.
+Displays addresses and checks for conflicts.
+Tracks call status and prompts for notes.
+Saves notes to a file.
+Usage
+Load the contact database: The script attempts to load the contact database from a specified file.
+Enter usernames: The user is prompted to enter usernames to call.
+Display addresses: The script displays the address and phone number associated with the entered username and checks for address conflicts.
+Check call status: The script checks whether the user has already been called.
+Add notes: The user can add notes for the current call.
+Save notes: After exiting the loop, the script saves the notes to a file.
